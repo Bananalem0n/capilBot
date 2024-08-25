@@ -32,7 +32,7 @@ export const Sites = sequelize.define("prod_site", {
     type: DataTypes.STRING(20),
     allowNull: true,
   },
-  IP_WAN_Fortigate: {
+  IP_WAN_Fortigate_or_laptop: {
     type: DataTypes.STRING(20),
     allowNull: true,
   },
