@@ -1,4 +1,5 @@
 import TelegramBot from "node-telegram-bot-api";
+import { sequelize } from "./config/sequelize.config.js";
 import { Sites } from "./model/site.model.js";
 import "dotenv/config";
 
@@ -6,14 +7,14 @@ import "dotenv/config";
 const token = process.env.BOT_TOKEN ?? "";
 const bot = new TelegramBot(token, { polling: true });
 
-// (async () => {
-//   try {
-//     await sequelize.authenticate();
-//     console.log("Connection has been established successfully.");
-//   } catch (error) {
-//     console.error("Unable to connect to the database:", error);
-//   }
-// })();
+(async () => {
+  try {
+    await sequelize.authenticate();
+    console.log("Connection has been established successfully.");
+  } catch (error) {
+    console.error("Unable to connect to the database:", error);
+  }
+})();
 
 bot.onText(/\/info (\d+)/, async (msg, match) => {
   const chatId = msg.chat.id;
@@ -26,7 +27,7 @@ bot.onText(/\/info (\d+)/, async (msg, match) => {
       const siteInfo = data.map((site) => {
         let info = '';
         for (const [key, value] of Object.entries(site.dataValues)) {
-          if (key !== "id" && key !== "Alamat") {
+          if (key !== "id" && key !== "kode") {
             info += `${key}: ${value}\n`;
           }
         }
@@ -49,7 +50,7 @@ bot.onText(/\/info (\d+)/, async (msg, match) => {
 const fetchSite = async (site_id) => {
   const data = await Sites.findAll({
     where: {
-      Kode: site_id // Use the 'Kode' field as per the updated schema
+      kode: site_id // Use the 'Kode' field as per the updated schema
     }
   });
   return data;

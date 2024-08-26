@@ -8,48 +8,50 @@ export const Sites = sequelize.define("prod_site", {
     autoIncrement: true,
     allowNull: false,
   },
-  Site_ID_DUKCAPIL: {
-    type: DataTypes.STRING(30),
+  kode: {
+    type: DataTypes.INTEGER,
+  },
+  site_id: {
+    type: DataTypes.STRING(32),
+  },
+  status_link_wan: {
+    type: DataTypes.STRING(255),
     allowNull: true,
   },
-  Status_Link_WAN: {
-    type: DataTypes.STRING(40),
+  kab_kota: {
+    type: DataTypes.STRING(32),
     allowNull: true,
   },
-  KAB_KOTA: {
-    type: DataTypes.STRING(30),
+  mitra_MPLS: {
+    type: DataTypes.STRING(255),
     allowNull: true,
   },
-  Kode: {
-    type: DataTypes.STRING(10),
+  bandwidth: {
+    type: DataTypes.STRING(255),
     allowNull: true,
   },
-  Alamat: {
-    type: DataTypes.STRING(110),
+  ip_router_xl: {
+    type: DataTypes.STRING(32),
     allowNull: true,
   },
-  IP_Router_XL: {
-    type: DataTypes.STRING(20),
+  ip_wan_fortigate: {
+    type: DataTypes.STRING(32),
     allowNull: true,
   },
-  IP_WAN_Fortigate_or_laptop: {
-    type: DataTypes.STRING(20),
+  network_ip_lan: {
+    type: DataTypes.STRING(32),
     allowNull: true,
   },
-  network_IP_LAN: {
-    type: DataTypes.STRING(20),
+  ip_lan_xl: {
+    type: DataTypes.STRING(32),
     allowNull: true,
   },
-  IP_LAN_XL: {
-    type: DataTypes.STRING(20),
+  ip_lan_telkom: {
+    type: DataTypes.STRING(32),
     allowNull: true,
   },
-  IP_LAN_Telkom: {
-    type: DataTypes.STRING(20),
-    allowNull: true,
-  },
-  IP_VIP_VRRP: {
-    type: DataTypes.STRING(20),
+  ip_vip_vrrp: {
+    type: DataTypes.STRING(32),
     allowNull: true,
   },
 });
