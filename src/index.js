@@ -16,6 +16,241 @@ const bot = new TelegramBot(token, { polling: true });
   }
 })();
 
+// Pre-Test Command
+bot.onText(/\/pretest/, (msg) => {
+  const chatId = msg.chat.id;
+  const threadId = msg.message_thread_id;
+
+  const pretestInstructions = `
+  737106 BONTOALA
+
+  ===Pre-Test=== 
+  1. Foto Ransnet (Keliatan Port dan kode POI)
+  2. ipconfig /all (di pc pic)
+  3. tracert -d 192.168.150.31 (di pic)
+  4. Foto ModemXL (ipaso/lintas/modemstar/RTN)
+  5. colok laptop ke modem xl (ipaso/lintas/modemstar)
+  6. test ptp (Tag Bot)
+  7. ping 10.172.6.222
+  8. ping 10.171.20.234
+  `;
+
+  bot.sendMessage(chatId, pretestInstructions, { message_thread_id: threadId });
+});
+
+// Before Migration Command
+bot.onText(/\/before/, (msg) => {
+  const chatId = msg.chat.id;
+  const threadId = msg.message_thread_id;
+
+  const beforeMigrasiInstructions = `
+  ===Before Migrasi=== 
+  0.1 Foto Lokasi Gedung
+  0.2 Foto Lokasi Ruangan Perangkat Existing (dari jauh)
+  0.3 Capture Perangkat Fortinet
+  0.4 Capture SN Perangkat Fortinet
+  0.5 Capture SN Ruijie
+  0.6 Foto Sebelum Pemasangan Perangkat
+  2.1 Capture SIAK Terpusat Client
+  2.2 Capture Perekaman Benroller
+  2.3 Capture Percetakan BCardMgmt
+  `;
+
+  bot.sendMessage(chatId, beforeMigrasiInstructions, { message_thread_id: threadId });
+});
+
+// Inject Script Command
+bot.onText(/\/inject/, (msg) => {
+  const chatId = msg.chat.id;
+  const threadId = msg.message_thread_id;
+
+  const injectScriptInstructions = `
+  ===Inject Script===
+  9. Push Telkom test Telkom Config (Laptop > Switch Existing)
+  6.1 Capture Overview FortinetSDWAN
+  6.2 Capture Overview Ruijie Switch
+  `;
+
+  bot.sendMessage(chatId, injectScriptInstructions, { message_thread_id: threadId });
+});
+
+// Discovery Topology & After Migration Command
+bot.onText(/\/discovery/, (msg) => {
+  const chatId = msg.chat.id;
+  const threadId = msg.message_thread_id;
+
+  const discoveryTopologyInstructions = `
+  ===Discovery Topology & After Migrasi=== 
+  1.1 Ping Gateway WAN XL dari Fortinet
+  1.2 Ping 10.172.6.222 Dari Fortinet
+  1.3 Ping 10.171.20.234 Dari Fortinet
+  1.4 Ipconfig PC Admin
+  1.5 Ping 192.168.150.31
+  1.6 Ping 172.16.232.231
+  1.7 Ping 172.16.235.17
+  1.8 Ping 172.16.105.10
+  1.9 SpeedTest http://172.16.105.10
+  3.1 Capture SIAK Terpusat Client
+  3.2 Capture Perekaman Benroller
+  3.3 Capture Percetakan BCardMgmt
+  `;
+
+  bot.sendMessage(chatId, discoveryTopologyInstructions, { message_thread_id: threadId });
+});
+
+// Cabut WAN Command
+bot.onText(/\/cabut/, (msg) => {
+  const chatId = msg.chat.id;
+  const threadId = msg.message_thread_id;
+
+  const cabutWANInstructions = `
+  ===Cabut WAN Forti Port 1 (Telkom Only)=== 
+  4.1 ping 172.16.232.231
+  4.2 ping 172.16.235.17
+  4.3 tracert 172.16.232.231
+  4.4 tracert 172.16.235.17
+  4.5 capture Perekaman benroller
+  4.6 capture perekaman bcardmgmt
+  `;
+
+  bot.sendMessage(chatId, cabutWANInstructions, { message_thread_id: threadId });
+});
+
+// Colok WAN Command
+bot.onText(/\/colok/, (msg) => {
+  const chatId = msg.chat.id;
+  const threadId = msg.message_thread_id;
+
+  const colokWANInstructions = `
+  ===Colok WAN Forti Port 1 dan matikan ransnet===
+  5.1 ping 192.168.150.31
+  5.2 tracert 192.168.150.31
+  5.3 Capture SIAK Terpusat
+  `;
+
+  bot.sendMessage(chatId, colokWANInstructions, { message_thread_id: threadId });
+});
+
+// Finishing Command
+bot.onText(/\/finishing/, (msg) => {
+  const chatId = msg.chat.id;
+  const threadId = msg.message_thread_id;
+
+  const finishingInstructions = `
+  ====Finishing dan NYALAKAN RANSNET=== 
+  0.7 Capture Sesudah Pemasangan Perangkat
+  7.1 UAT
+  7.2 DO
+  6.3 Capture Overview Dashboard Fortimanager
+  `;
+
+  bot.sendMessage(chatId, finishingInstructions, { message_thread_id: threadId });
+});
+// Pre-Test Command
+bot.onText(/\/pretest/, (msg) => {
+  const chatId = msg.chat.id;
+  const threadId = msg.message_thread_id;
+
+  const pretestInstructions = `
+  737106 BONTOALA
+
+  ===Pre-Test=== 
+  1. Foto Ransnet (Keliatan Port dan kode POI)
+  2. ipconfig /all (di pc pic)
+  3. tracert -d 192.168.150.31 (di pic)
+  4. Foto ModemXL (ipaso/lintas/modemstar/RTN)
+  5. colok laptop ke modem xl (ipaso/lintas/modemstar)
+  6. test ptp (Tag Bot)
+  7. ping 10.172.6.222
+  8. ping 10.171.20.234
+  `;
+
+  bot.sendMessage(chatId, pretestInstructions, { message_thread_id: threadId });
+});
+
+// Before Migration Command
+bot.onText(/\/before/, (msg) => {
+  const chatId = msg.chat.id;
+  const threadId = msg.message_thread_id;
+
+  const beforeMigrasiInstructions = `
+  ===Before Migrasi=== 
+
+  0.1 Foto Lokasi Gedung
+  0.2 Foto Lokasi Ruangan Perangkat Existing (dari jauh)
+  0.3 Capture Perangkat Fortinet
+  0.4 Capture SN Perangkat Fortinet
+  0.5 Capture SN Ruijie
+  0.6 Foto Sebelum Pemasangan Perangkat
+  2.1 Capture SIAK Terpusat Client
+  2.2 Capture Perekaman Benroller
+  2.3 Capture Percetakan BCardMgmt
+  `;
+
+  bot.sendMessage(chatId, beforeMigrasiInstructions, { message_thread_id: threadId });
+});
+
+// Inject Script Command
+bot.onText(/\/after/, (msg) => {
+  const chatId = msg.chat.id;
+  const threadId = msg.message_thread_id;
+
+  const injectScriptInstructions = `
+  ===Inject Script===
+  9. Push Telkom test Telkom Config (Laptop > Switch Existing)
+  6.1 Capture Overview FortinetSDWAN
+  6.2 Capture Overview Ruijie Switch
+
+  ===Discovery Topology & After Migrasi=== 
+  1.1 Ping Gateway WAN XL dari Fortinet
+  1.2 Ping 10.172.6.222 Dari Fortinet
+  1.3 Ping 10.171.20.234 Dari Fortinet
+  1.4 Ipconfig PC Admin
+  1.5 Ping 192.168.150.31
+  1.6 Ping 172.16.232.231
+  1.7 Ping 172.16.235.17
+  1.8 Ping 172.16.105.10
+  1.9 SpeedTest http://172.16.105.10
+  3.1 Capture SIAK Terpusat Client
+  3.2 Capture Perekaman Benroller
+  3.3 Capture Percetakan BCardMgmt
+
+  ===Cabut WAN Forti Port 1 (Telkom Only)=== 
+  4.1 ping 172.16.232.231
+  4.2 ping 172.16.235.17
+  4.3 tracert 172.16.232.231
+  4.4 tracert 172.16.235.17
+  4.5 capture Perekaman benroller
+  4.6 capture perekaman bcardmgmt
+
+  ===Colok WAN Forti Port 1 dan matikan ransnet===
+  5.1 ping 192.168.150.31
+  5.2 tracert 192.168.150.31
+  5.3 Capture SIAK Terpusat
+  
+  ====Finishing dan NYALAKAN RANSNET=== 
+  0.7 Capture Sesudah Pemasangan Perangkat
+  7.1 UAT
+  7.2 DO
+  6.3 Capture Overview Dashboard Fortimanager
+  `;
+
+  bot.sendMessage(chatId, injectScriptInstructions, { message_thread_id: threadId });
+});
+
+// Discovery Topology & After Migration Command
+bot.onText(/\/discovery/, (msg) => {
+  const chatId = msg.chat.id;
+  const threadId = msg.message_thread_id;
+
+  const discoveryTopologyInstructions = `
+  
+  `;
+
+  bot.sendMessage(chatId, discoveryTopologyInstructions, { message_thread_id: threadId });
+});
+
+
 bot.onText(/\/info (\d+)/, async (msg, match) => {
   // Get the chat ID and the message thread ID
   const chatId = msg.chat.id;
