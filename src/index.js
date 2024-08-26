@@ -152,9 +152,8 @@ bot.onText(/\/pretest/, (msg) => {
   const threadId = msg.message_thread_id;
 
   const pretestInstructions = `
-  737106 BONTOALA
-
   ===Pre-Test=== 
+  
   1. Foto Ransnet (Keliatan Port dan kode POI)
   2. ipconfig /all (di pc pic)
   3. tracert -d 192.168.150.31 (di pic)
@@ -237,19 +236,6 @@ bot.onText(/\/after/, (msg) => {
 
   bot.sendMessage(chatId, injectScriptInstructions, { message_thread_id: threadId });
 });
-
-// Discovery Topology & After Migration Command
-bot.onText(/\/discovery/, (msg) => {
-  const chatId = msg.chat.id;
-  const threadId = msg.message_thread_id;
-
-  const discoveryTopologyInstructions = `
-  
-  `;
-
-  bot.sendMessage(chatId, discoveryTopologyInstructions, { message_thread_id: threadId });
-});
-
 
 bot.onText(/\/info (\d+)/, async (msg, match) => {
   // Get the chat ID and the message thread ID
