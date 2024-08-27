@@ -164,7 +164,7 @@ bot.onText(/\/info (\d+)/, async (msg, match) => {
 
 
 const fetchSite = async (site_id) => {
-  const data = await Sites.one({
+  const data = await Sites.findAll({
     where: {
       kode: site_id 
     }
