@@ -107,6 +107,26 @@ bot.onText(/\/after/, (msg) => {
   bot.sendMessage(chatId, injectScriptInstructions, { message_thread_id: threadId });
 });
 
+bot.onText(/\/ptp (\d+)/, async (msg, match) => {
+  const chatId = msg.chat.id;
+  const threadId = msg.message_thread_id;
+  const data = `${match[1]}`;
+
+  try {
+    const siteData = await fetchPTP(data);
+
+    if (siteData) {
+      const ptpInfo = `IP : ${siteData.ip_wan_fortigate}\nSubnet : 255.255.255.252\nGateway : ${siteData.ip_router_xl}`;
+      bot.sendMessage(chatId, ptpInfo, { message_thread_id: threadId });
+    } else {
+      bot.sendMessage(chatId, "No site found with the given ID.", { message_thread_id: threadId });
+    }
+  } catch (error) {
+    bot.sendMessage(chatId, "An error occurred while fetching the site information.", { message_thread_id: threadId });
+    console.error(error);
+  }
+});
+
 bot.onText(/\/info (\d+)/, async (msg, match) => {
   // Get the chat ID and the message thread ID
   const chatId = msg.chat.id;
@@ -144,11 +164,22 @@ bot.onText(/\/info (\d+)/, async (msg, match) => {
 
 
 const fetchSite = async (site_id) => {
-  const data = await Sites.findAll({
+  const data = await Sites.one({
     where: {
-      kode: site_id // Use the 'Kode' field as per the updated schema
+      kode: site_id 
     }
   });
   return data;
 };
 
+const fetchPTP = async (topicName) => {
+
+  const data = await Sites.findOne({
+    attributes: ['site_id', 'ip_router_xl', 'ip_wan_fortigate'],
+    where: {
+      kode: topicName,
+    },
+  });
+
+  return data;
+};
